@@ -40,8 +40,19 @@
 			<?php echo $div_layers_filter;?>
 			
 			<?php echo $div_shares_filter;?>
-		
-						
+
+			<!-- actionable filters -->
+			<div class="stat-filters clearingfix">
+				<!-- keep track of what status we're looking at -->
+				<ul id="cluster_switch" class="status-filters">
+				
+				<strong>Actionable</strong>
+					<li><a id="media_102" href="#"><div class="status-title">Actionable</div></a></li>
+					<li><a id="media_103" href="#"><div class="status-title">Urgent</div></a></li>
+					<li><a id="media_104" href="#"><div class="status-title">Action Taken</div></a></li>
+				</ul>
+			</div>
+			<!-- /actionable filters -->
 
 		</div>
 		</div>

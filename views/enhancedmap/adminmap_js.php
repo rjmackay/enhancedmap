@@ -1013,13 +1013,30 @@
 			
 			
 			// Media Filter Action
-			$('.filters li a').click(function()
+			$("a[id^='media_']").click(function()
 			{
-				var startTimestamp = $("#startDate").val();
-				var endTimestamp = $("#endDate").val();
-				var startTime = new Date(startTimestamp * 1000);
-				var endTime = new Date(endTimestamp * 1000);
-				gMediaType = parseFloat(this.id.replace('media_', '')) || 0;
+				if($(this).hasClass('active'))
+				{
+					$(this).removeClass('active');
+				}
+				else
+				{
+				$(this).addClass('active');
+				}
+				
+				media = $("a[id^='media_']");
+				gMediaType = new Array();
+				for (i = 0; i < media.length; i++)
+				{
+					if ($(media[i]).hasClass('active'))
+					{
+						gMediaType.push(parseFloat(media[i].id.replace('media_', '')));
+					}
+				}
+				gMediaType = gMediaType.join(',');
+				
+				// Destroy any open popups
+				onPopupClose();
 				
 				// Get Current Zoom
 				currZoom = map.getZoom();
@@ -1027,21 +1044,15 @@
 				// Get Current Center
 				currCenter = map.getCenter();
 				
-				// Refresh Map
-				addMarkers(gCategoryId, startTimestamp, endTimestamp, 
-				           currZoom, currCenter, gMediaType);
-				
-				$('.filters li a').attr('class', '');
-				$(this).addClass('active');
+				var startDate = $("#startDate").val();
+				var endDate = $("#endDate").val();
+				refreshGraph(startDate, endDate);	
 
-				var fullUrl = "<?php echo url::site(); ?>" + time_line_url + "?"+categoriesStr+iValue;
-				fullUrl = addParamsToUrl(fullUrl);
+				var startTime = new Date($("#startDate").val() * 1000);
+				var endTime = new Date($("#endDate").val() * 1000);
+				addMarkers(gCategoryId, $("#startDate").val(), $("#endDate").val(), currZoom, currCenter, gMediaType);
 				
-				gTimeline = $.timeline({categoryId: gCategoryId, startTime: startTime, 
-				    endTime: endTime, mediaType: gMediaType,
-					url: fullUrl
-				});
-				gTimeline.plot();
+				return false;
 			});
 			
 			$('#playTimeline').click(function()

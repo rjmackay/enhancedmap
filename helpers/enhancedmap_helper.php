@@ -665,6 +665,17 @@ class enhancedmap_helper_Core {
 		}
 		$color = self::merge_colors($colors);	
 		
+		$actionables = array();
+		if (isset($_GET['m']) AND in_array($_GET['m'], array(101,102,103,104)) )
+		{
+			$results = ORM::Factory('actionable')->find_all()->as_array();
+			
+			foreach($results as $actionable)
+			{
+				$actionables[$actionable->incident_id] = $actionable;
+			}
+		}
+		
 		//if simple groups are involved things get crazy
 		
 		if(isset($_GET['sgid']))
@@ -828,6 +839,16 @@ class enhancedmap_helper_Core {
 			$json_item .= "\"ids\": [".$marker->incident_id."], ";
 			$json_item .= "\"thumb\": \"".$thumb."\", \n";
 			$json_item .= "\"timestamp\": \"" . strtotime($marker->incident_date) . "\"";
+			if (isset($actionables[$marker->incident_id]))
+			{
+				$json_item .= ", \n";
+				$json_item .= "\"actionable\": \"" . $actionables[$marker->incident_id]->status() . "\", \n";
+				$json_item .= "\"strokecolor\": \"" . $actionables[$marker->incident_id]->color() . "\", \n";
+				$json_item .= "\"strokeopacity\": 0.5, \n";
+				$json_item .= "\"strokewidth\": 5, \n";
+				$json_item .= "\"radius\": " . Kohana::config('map.marker_radius')*2.5 . ", \n";
+				$json_item .= "\"icon\": \"\"";
+			}
 			$json_item .= "},";
 			$json_item .= "\"geometry\": {";
 			$json_item .= "\"type\":\"Point\", ";
