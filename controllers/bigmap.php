@@ -71,6 +71,18 @@ class Bigmap_Controller extends Template_Controller {
 		$this->template->header->site_name_style = $site_name_style;
 		$this->template->header->site_tagline = Kohana::config('settings.site_tagline');
 
+// Get banner image and pass to the header
+		if (Kohana::config('settings.site_banner_id') != NULL)
+		{
+			$banner = ORM::factory('media')->find(Kohana::config('settings.site_banner_id'));
+			$this->template->header->banner = url::convert_uploaded_to_abs($banner->media_link);
+		}
+		else
+		{
+			$this->template->header->banner = NULL;
+		}
+
+
 		$this->template->header->this_page = "";
 
 		$this->template->footer->footer_block = $this->themes->footer_block();
@@ -79,7 +91,7 @@ class Bigmap_Controller extends Template_Controller {
     public function index()
     {
     	//set the title of the page
-    	$this->template->header->this_page = 'bigmap';
+		$this->template->header->this_page = 'home';
     	//javascript for the big map special features
 		plugin::add_javascript("enhancedmap/js/bigmap");
     	

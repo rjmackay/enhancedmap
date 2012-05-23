@@ -23,14 +23,33 @@
 	?>
 </head>
 
-<body id="page">
+<body id="page" class="page-bigmap">
 
+			<!-- logo -->
+			<?php if($banner == NULL){ ?>
+			<div id="logo">
+				<h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
+				<span><?php echo $site_tagline; ?></span>
+			</div>
+			<?php }else{ ?>
+			<a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
+			<?php } ?>
+			<!-- / logo -->
 
+			<!-- submit incident -->
+			<?php //echo $submit_btn; ?>
+			<!-- / submit incident -->
+			
+				<!-- languages -->
+				<?php echo $languages;?>
+				<!-- / languages -->
+				
 				<!-- mainmenu -->
 				<div id="mainmenu" class="clearingfix">
 					<ul>
-						<?php nav::main_tabs($this_page); ?>
+						<?php nav::main_tabs($this_page, array('contact', 'reports_submit')); ?>
+						<li><a  class="active submit-incident" href="<?php echo url::site('reports/submit') ?>"><?php echo Kohana::lang('ui_main.submit') ?></a></li>
+						<li style="float: right;"><a href="<?php echo url::site('mobile') ?>"><?php echo Kohana::lang('mobile.switch_to_mobile_version') ?></a></li>
 					</ul>
-
 				</div>
 				<!-- / mainmenu -->

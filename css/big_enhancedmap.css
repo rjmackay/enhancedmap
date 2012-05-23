@@ -566,6 +566,18 @@ div#printmap-link {
 	font-weight: bold;
 }
 
+div#mainmenu ul li a.submit-incident {
+	background: #D25E4F url(/themes/default/images/submit-incident.png) 5px 50% no-repeat;
+	padding: 4px 12px 4px 30px;
+	margin-top: -1px;
+}
+
+div.language-box {
+	position:absolute;
+	top: 25px;
+	right: 18px;
+}
+
 /* Tweak info window */
 #iw{
 	padding:20px 0 0 5px;

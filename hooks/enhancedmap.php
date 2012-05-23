@@ -16,7 +16,7 @@ class enhancedmap {
 	
 		// Hook into routing
 		Event::add('system.pre_controller', array($this, 'add'));
-		
+		Event::add('system.post_routing', array($this,'replace_main'));
 	}
 	
 	/**
@@ -25,9 +25,9 @@ class enhancedmap {
 	public function add()
 	{
 		//Just in case we need this
-		Event::add('ushahidi_action.nav_main_top', array($this, '_add_big_map_tab'));	 //adds the big map  tab		
+		//Event::add('ushahidi_action.nav_main_top', array($this, '_add_big_map_tab')); //adds the big map  tab
 		Event::add('ushahidi_action.nav_admin_main_top', array($this, '_admin_nav_tab'));	 //adds the admin map  tab
-		if(Router::$controller == "main")
+		if (Router::$controller == "main")
 		{
 			Event::add('ushahidi_action.map_main_filters', array($this, '_add_big_map_main_button'));	 //adds the big map  tab
 			//use sneaky JS
@@ -401,6 +401,14 @@ class enhancedmap {
 	public function _hide_content_for_adminmap()
 	{
 		echo '<style type="text/css"> #content{display:none;}</style>';
+	}
+	
+	public function replace_main()
+	{
+		if (Router::$controller === 'main')
+		{
+			Router::$controller = 'bigmap';
+		}
 	}
 	
 }//end class
