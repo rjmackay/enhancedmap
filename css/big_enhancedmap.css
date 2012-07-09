@@ -54,7 +54,8 @@ div#right{
 }
 
 div#right_colapse{
-	
+	height: 500px;
+	overflow: auto;
 }
 
 div#timeline_drag{
@@ -305,13 +306,12 @@ ul.category-filters{
 	border: none;
 	margin: 0px;
 	margin: 0px;
-	height: 150px;
-	overflow: auto;
+	height: auto;
+	overflow: visible;
 	/*position: relative;*/
 }
 
 ul#kml_switch{
-	height: 75px;
   position: static;
 }
 

@@ -50,6 +50,7 @@ function init() {
 	//capture resize events on the map to make sure it's redrawn properly
 	$(window).resize(function() {
   			map.updateSize();
+			jQuery('#right_colapse').height(jQuery('.map').height() - 150 + "px");
   			if(lastPanOnResizeDirection == 1)
   			{
 				map.pan(0,1);
@@ -90,6 +91,8 @@ function init() {
 	ob.style.top="150px";
 	ob.ondrag=function(){return false;};
 	ob.onselectstart=function(){return false;};
+	
+	jQuery('#right_colapse').height(jQuery('.map').height() - 150 + "px");
 	
 	ob = document.getElementById("timeline_holder");
 	ob.style.left="1px";
