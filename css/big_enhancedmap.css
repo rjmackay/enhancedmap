@@ -566,3 +566,7 @@ div#printmap-link {
 	font-weight: bold;
 }
 
+/* Tweak info window */
+#iw{
+	padding:20px 0 0 5px;
+}
