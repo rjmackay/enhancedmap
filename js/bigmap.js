@@ -78,28 +78,24 @@ function init() {
 		myHeight = document.body.clientHeight;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	ob = document.getElementById("right");
 	ob.style.display="block";
 	ob.style.left=(myWidth - (250 + 10)) + "px";
-	ob.style.top="150px";
+	ob.style.top="98px";
 	ob.ondrag=function(){return false;};
 	ob.onselectstart=function(){return false;};
 	
 	jQuery('#right_colapse').height(jQuery('.map').height() - 150 + "px");
 	
 	ob = document.getElementById("timeline_holder");
-	ob.style.left="1px";
-	ob.style.top= myHeight - (230 + 1) + "px";
+	/*ob.style.left="1px";
+	ob.style.top= myHeight - (230 + 1) + "px";*/
+	ob.style.top="98px";
+	ob.style.left = (myWidth - (450 + 20 + 250 + 10)) + "px";
 	ob.style.display="block";
 	ob.ondrag=function(){return false;};
 	ob.onselectstart=function(){return false;};
+	togglelayer('timeline_colapse', 'toggletimeline');
 }
 
 function mD(ob,e) {

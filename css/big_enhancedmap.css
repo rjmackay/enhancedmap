@@ -168,6 +168,10 @@ div.map {
 	border-right: solid 1px #999;
 }
 
+#timeline_drag, #right_move {
+	text-transform: uppercase; font-size: 110%;
+}
+
 .mapMousePosition
 {
 	min-width: 135px;
@@ -184,16 +188,14 @@ div.map {
 div.graph-holder {
     height:150px;
     overflow:hidden;
-    width:600px;
-    position:relative;
-    padding:0px;
+    width:430px;
 }
 
 
 div#timeline_holder
 {
 	background-image: url('../images/opacity60.png');
-	width: 620px;
+	width: 450px;
 	z-index: 50;
 	position: absolute;
 	float: right;
@@ -210,7 +212,7 @@ div#timeline_colapse
 div.slider-holder {
     font-size:70%;
     height:60px;
-    width: 600px;
+    width: 430px;
     padding-left: 11px;
 	margin-top: 0px;
 }
@@ -304,6 +306,7 @@ ul.category-filters{
     background: none;
     list-style: none;
 	border: none;
+border-bottom: #C7C2BC 7px solid;
 	margin: 0px;
 	margin: 0px;
 	height: auto;

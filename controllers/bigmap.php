@@ -129,7 +129,7 @@ class Bigmap_Controller extends Template_Controller {
 		
 		
 		//layers
-		$this->template->content->div_layers_filter = enhancedmap_helper::set_layers();
+		$this->template->content->div_layers_filter = enhancedmap_helper::set_layers(false, true);
 		
 		//shares
 		$this->template->content->div_shares_filter = enhancedmap_helper::set_shares(false, false);
